@@ -21,6 +21,22 @@ public class ProductServiceImpl implements ProductService {
         return product;
     }
 
+    public void edit(Product product){
+        productRepository.edit(product);
+    }
+
+    public Product getProductByProductId(int productId){
+        List<Product> allProduct = findAll();
+        for (Product currentProduct : allProduct) {
+            int currentProductId = Integer.parseInt(currentProduct.getProductId());
+            if (currentProductId == productId) {
+                return currentProduct;
+            }
+        }
+        // productId harus dijamin ditemukan
+        return null;
+    }
+
     @Override
     public List<Product> findAll(){
         Iterator<Product> productIterator = productRepository.findAll();

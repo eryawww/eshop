@@ -12,7 +12,20 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
     public Product create(Product product){
         productData.add(product);
+        product.setProductId(String.valueOf(productData.size()));
         return product;
+    }
+
+    public Product edit(Product product){
+        for (Product currentProduct: productData) {
+            if (currentProduct.getProductId().equals(product.getProductId())) {
+                currentProduct.setProductQuantity(product.getProductQuantity());
+                currentProduct.setProductName(product.getProductName());
+                return currentProduct;
+            }
+        }
+        //  Harus dijamin product ditemukan
+        return null;
     }
 
     public Iterator<Product> findAll(){
