@@ -12,7 +12,11 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
     public Product create(Product product){
         productData.add(product);
+        product.setProductId(String.valueOf(productData.size()));
         return product;
+    }
+    public void delete(int index){
+        productData.remove(index);
     }
 
     public Iterator<Product> findAll(){
