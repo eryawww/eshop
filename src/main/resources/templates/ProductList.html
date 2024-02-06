@@ -16,12 +16,18 @@
         <tr>
             <th scope="col">Product Name</th>
             <th scope="col">Quantity</th>
+            <th scope="col">Edit</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="product: ${products}">
             <td th:text="${product.productName}"></td>
             <td th:text="${product.productQuantity}"></td>
+            <td>
+                <a th:href="@{/product/edit/{idProductEdit}(idProductEdit=${product.productId})}" >
+                    <img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABTUlEQVR4nO2ZvUrEQBRGT2GrhaWPIdhrLdqJnT/jvzbb+RzrI2xt4wPYWNgslvsG2lhpoyJklYERhmUSExu/G+6BEEhS3MOXuQlzwXG6sgLcAC/AG3APbGOMXeAT+CocVxhhDhjXSPwcWxhhEXhoELlDmCPgCVhrIfOKKKfANBW5nl2vk3lGXGJQuF+SucaYREkmdrNlDErkMuPUmk1KbACrWWuW4aSDxCA9F7sZ1iWmwDFCHAJVKu6yg8QFQvRC4sAlRPAkrCdxjhAuoUIvkgguIULwJEQInoQIwZMwnsQZQgSXECH0IYl9lxBhL0ui7eZZlX7hZVgA3q1LRDazBRs3mNss7Kbn/o1hNkSpK1JeIjKZmQjNFmtCYinbIS/JmJCI7DSMgavsHD+S0ox+Gc5/pNYsz2Oh+ElqAHHsNY8RbpPMKL1mcc04Dn/jG2ZuF5tGhdokAAAAAElFTkSuQmCC">
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

@@ -12,7 +12,38 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
     public Product create(Product product){
         productData.add(product);
+        product.setProductId(String.valueOf(productData.size()));
         return product;
+    }
+
+    public Product edit(Product product){
+        for (Product currentProduct: productData) {
+            if (currentProduct.getProductId().equals(product.getProductId())) {
+                currentProduct.setProductQuantity(product.getProductQuantity());
+                currentProduct.setProductName(product.getProductName());
+                return currentProduct;
+            }
+        }
+        //  Harus dijamin product ditemukan
+        return null;
+    }
+
+    public Product getProductByProductId(String productId){
+        List<Product> allProduct = getAllProduct();
+        for (Product currentProduct : allProduct) {
+            if (currentProduct.getProductId().equals(productId)) {
+                return currentProduct;
+            }
+        }
+        // productId harus dijamin ditemukan
+        return null;
+    }
+
+    public List<Product> getAllProduct(){
+        Iterator<Product> productIterator = findAll();
+        List<Product> allProduct = new ArrayList<>();
+        productIterator.forEachRemaining(allProduct::add);
+        return allProduct;
     }
 
     public Iterator<Product> findAll(){
