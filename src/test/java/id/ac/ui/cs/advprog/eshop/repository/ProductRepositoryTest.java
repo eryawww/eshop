@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -68,4 +69,55 @@ class ProductRepositoryTest {
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    public void testEditProduct() {
+        Product product = new Product();
+        product.setProductName("Product A");
+        product.setProductQuantity(5);
+        productRepository.create(product);
+        // Edit Product
+        Product updatedProduct = new Product();
+        updatedProduct.setProductId(product.getProductId());
+        updatedProduct.setProductName("Product New");
+        updatedProduct.setProductQuantity(15);
+        Product editedProduct = productRepository.edit(updatedProduct);
+        // Assert Test
+        assertNotNull(editedProduct);
+        assertEquals("Product New", editedProduct.getProductName());
+        assertEquals(15, editedProduct.getProductQuantity());
+    }
+
+    @Test
+    public void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductName("Product A");
+        product.setProductQuantity(5);
+
+        productRepository.create(product);
+        productRepository.delete(product);
+
+        // Ensure the product is no longer in the repository
+        List<Product> allProduct = productRepository.getAllProduct();
+        assertEquals(allProduct.size(), 0);
+    }
+
+    @Test
+    public void testDeleteProductNotExisting() {
+        Product product = new Product();
+        product.setProductName("Product A");
+        product.setProductQuantity(5);
+
+        Product notExistingProduct = new Product();
+        notExistingProduct.setProductName("Product B");
+        notExistingProduct.setProductQuantity(10);
+
+        productRepository.create(product);
+        productRepository.delete(notExistingProduct);
+
+        // Ensure the product is no longer in the repository
+        List<Product> allProduct = productRepository.getAllProduct();
+        assertEquals(allProduct.size(), 1);
+    }
+
 }
