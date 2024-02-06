@@ -18,6 +18,24 @@ public class ProductRepository {
     public void delete(int index){
         productData.remove(index);
     }
+    public void delete(Product product) {
+        productData.remove(product);
+    }
+
+    public void deleteByProductId(String productId){
+        List<Product> allProducts = getAllProduct();
+        for(Product currentProduct: allProducts) {
+            if(currentProduct.getProductId().equals(productId)) {
+                delete(currentProduct);
+            }
+        }
+    }
+    public List<Product> getAllProduct() {
+        Iterator<Product> productIterator = findAll();
+        List<Product> allProduct = new ArrayList<>();
+        productIterator.forEachRemaining(allProduct::add);
+        return allProduct;
+    }
 
     public Iterator<Product> findAll(){
         return productData.iterator();
