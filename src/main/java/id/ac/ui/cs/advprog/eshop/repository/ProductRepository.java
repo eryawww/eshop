@@ -15,6 +15,21 @@ public class ProductRepository {
         product.setProductId(String.valueOf(productData.size()));
         return product;
     }
+    public void delete(int index){
+        productData.remove(index);
+    }
+    public void delete(Product product) {
+        productData.remove(product);
+    }
+
+    public void deleteByProductId(String productId){
+        List<Product> allProducts = getAllProduct();
+        for(Product currentProduct: allProducts) {
+            if(currentProduct.getProductId().equals(productId)) {
+                delete(currentProduct);
+            }
+        }
+    }
 
     public Product edit(Product product){
         for (Product currentProduct: productData) {
