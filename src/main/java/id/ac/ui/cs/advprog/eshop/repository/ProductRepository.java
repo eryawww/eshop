@@ -28,6 +28,24 @@ public class ProductRepository {
         return null;
     }
 
+    public Product getProductByProductId(String productId){
+        List<Product> allProduct = getAllProduct();
+        for (Product currentProduct : allProduct) {
+            if (currentProduct.getProductId().equals(productId)) {
+                return currentProduct;
+            }
+        }
+        // productId harus dijamin ditemukan
+        return null;
+    }
+
+    public List<Product> getAllProduct(){
+        Iterator<Product> productIterator = findAll();
+        List<Product> allProduct = new ArrayList<>();
+        productIterator.forEachRemaining(allProduct::add);
+        return allProduct;
+    }
+
     public Iterator<Product> findAll(){
         return productData.iterator();
     }
