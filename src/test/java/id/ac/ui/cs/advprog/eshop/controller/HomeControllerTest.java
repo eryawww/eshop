@@ -1,10 +1,26 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-public class HomeControllerTest {
-//    void testHomePage() {
-//        assertEquals("Sampo Cap Bambang", this.product.getProductName());
-//    }
+import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(MockitoExtension.class)
+class HomePageControllerTest {
+
+    @BeforeEach
+    void setUp() {
+    }
+
+    @InjectMocks
+    HomeController homePageController;
+
+    @Test
+    void homePageTitle() {
+        String result = homePageController.homePage();
+        assertEquals("HomePage", result);
+    }
 }

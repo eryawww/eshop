@@ -10,7 +10,7 @@ import java.util.List;
 public class HomeController {
 
     @GetMapping("/")
-    public String homePage(Model model){
+    public String homePage(){
         return "HomePage";
     }
 }
