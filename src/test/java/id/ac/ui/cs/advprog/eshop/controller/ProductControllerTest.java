@@ -40,7 +40,6 @@ public class ProductControllerTest {
     void testCreateProductPost() {
         Model model = mock(Model.class);
         Product product = new Product();
-        Mockito.when(productService.create(product)).thenReturn(product);
         String result = productController.createProductPost(product, model);
         assertEquals("redirect:list", result);
     }
@@ -48,8 +47,29 @@ public class ProductControllerTest {
     @Test
     void testProductListPage() {
         Model model = mock(Model.class);
-        Mockito.when(productService.findAll()).thenReturn(null);
         String result = productController.productListPage(model);
         assertEquals("productList", result);
+    }
+
+    @Test
+    void testDeleteProductPage() {
+        Model model = mock(Model.class);
+        String result = productController.deleteProductPage(model, "a");
+        assertEquals("redirect:../list", result);
+    }
+
+    @Test
+    void testEditProductPage() {
+        Model model = mock(Model.class);
+        String result = productController.editProductPage(model, "a");
+        assertEquals("editProduct", result);
+    }
+
+    @Test
+    void testEditProductPost() {
+        Model model = mock(Model.class);
+        Product product = new Product();
+        String result = productController.editProductPost(product, model, "a");
+        assertEquals("redirect:../list", result);
     }
 }
