@@ -33,7 +33,7 @@ public class ProductControllerTest {
     void testCreateProductPage() {
         Model model = mock(Model.class);
         String result = productController.createProductPage(model);
-        assertEquals("createProduct", result);
+        assertEquals("CreateProduct", result);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ProductControllerTest {
     void testProductListPage() {
         Model model = mock(Model.class);
         String result = productController.productListPage(model);
-        assertEquals("productList", result);
+        assertEquals("ProductList", result);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ProductControllerTest {
     void testEditProductPage() {
         Model model = mock(Model.class);
         String result = productController.editProductPage(model, "a");
-        assertEquals("editProduct", result);
+        assertEquals("EditProduct", result);
     }
 
     @Test
