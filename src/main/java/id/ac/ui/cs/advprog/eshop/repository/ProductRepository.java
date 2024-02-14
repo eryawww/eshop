@@ -12,7 +12,9 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
     public Product create(Product product){
         productData.add(product);
-//        product.setProductId(String.valueOf(productData.size()));
+        if (product.getProductId() == null){
+            product.setProductId(String.valueOf(Math.random()*1000));
+        }
         return product;
     }
     public Product delete(int index){
