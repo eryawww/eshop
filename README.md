@@ -1,4 +1,27 @@
-# Reflection 1
+Link: https://tutorial1-eryaw.koyeb.app
+# Tutorial 2
+## Code Quality Issue(s)
+Beberapa code quality issue yang saya dapat dari PMD adalah
+1. Penamaan fungsi yang tidak sesuai
+
+`The JUnit 5 test method name 'pageTitle_isCorrect' doesn't match '[a-z][a-zA-Z0-9]*'` Adalah annotation yang dihasilkan PMD untuk memberi tahu bahwa nama fungsi yang diberikan tidak sesuai dengan konfensi java.  
+
+2. Import yang tidak digunakan
+
+`Unused import 'java.util.List'` dan `Unused import 'org.springframework.web.bind.annotation.*':` merupakan contoh output yang diberikan PMD ketika suatu import dinilai tidak penting. Terlihat bahwa PMD menganjurkan import suatu kelas secara spesifik dibandingkan menggunakan `*` yang mana memang benar best practice yang ada.
+
+3. Modifier public pada kelas interface yang tidak diperlukan
+
+`Unnecessary modifier 'public' on method 'create': the method is declared in an interface type:` adalah output yang diberikan PMD ketika terdapat sebuah modifier publik pada sebuah method yang sebenarnya tidak diperlukan dikarenakan memang seharusnya begitu implicitly. 
+
+## Current implementation met the definition of Continuous Integration and Continuous Deployment?
+Menurut saya, implementasi yang saya lakukan pada github ini sudah mendukung Continuous Integration (CI) and Continuous Deployment (CD). Continous atau berkelanjutan dapat diartikan sebagai autonomous atau automatis. Test dan deployment otomatis sudah saya implementasikan pada tutorial ini dengan bantuan github workflow yang melakukan testing dan checking untuk setiap push / pull request yang dilakukan. Hal ini membuat proses development menjadi lebih efisien, mudah dilacak dan memenuhi standar yang diberikan.
+
+## Coverage Test (Bonus)
+
+
+
+# Tutorial 1
 
 ## Meaningful Names
 
