@@ -94,7 +94,7 @@ class ProductRepositoryTest {
         productRepository.create(product1);
         productRepository.create(product2);
 
-        productRepository.delete(0);
+        productRepository.delete("A");
         assertEquals("B", productRepository.getProductByProductId("B").getProductId());
         productRepository.getProductByProductId("NON EXISTING");
 
