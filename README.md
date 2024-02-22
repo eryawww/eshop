@@ -1,4 +1,30 @@
 Link: https://tutorial1-eryaw.koyeb.app
+# Tutorial 3
+## Principles applied
+Saya menggunakan prinsip Single Responsibility Principle
+(SRP), Open-Closed Principle (OCP), dan Dependency Inversions Principle
+(DIP). 
+1. SRP, satu kelas hanya memiliki satu tanggung jawab. Lebih spesifiknya, saya memisahkan CarController dan ProductController untuk memastikan masing-masing memiliki tanggung jawab yang jelas.
+2. OCP, CarRepository dan ProductRepository memiliki banyak persamaan. Keduanya sama-sama repository yang mengatur create, delete, dan sebagainya. Sehingga generalisasi interface repository diperlukan agar kedepannya penambahan fitur repository lain bisa dilakukan konsisten dan cepat.
+3. DIP, prinsip ini menekankan untuk menggunakan abstraksi dibandingkan implementasi konkrit. Ini merupakan alasan lain saya memecah CarController dan ProductController.
+
+## Advantages of applying SOLID
+
+Konvensi SOLID menurut saya bertugas untuk menyatukan mindset para programmer agar berpikir pada satu jalan yang bersih. Beberapa keuntungan dari penggunakan SOLID adalah.
+1. Panjang kode yang teratur membuat proses debugging, reading, dan testing menjadi lebih cepat. Pemecahan pada kelas CarController dan ProductControlller adalah salah satu contoh.
+2. Suatu fungsi hanya memiliki satu tanggung jawab membuat kita tau apa isinya hanya dengan melihat nama fungsinya. Pemecahan pada kelas CarController dan ProductControlller adalah salah satu contoh juga.
+3. Multilevel inheritance atau inheritance pada kelas konkrit akan membuat kita terbinggung-binggung attribut-attribut yang dimiliki oleh tiap kelas. Pemecahan pada kelas CarController yang sebelumnya inherit ProductControlller adalah contoh, CarController tidak memerlukan apa apa dari ProductController. Hierarki car controller tidak seharusnya berada sebaga child Product Controller.
+4. Pengembangan fitur baru menjadi lebih mudah, tidak menghancurkan kode dan test dari kode lama. Pembuatan interface baru untuk beberapa kelas yang seragam merupakan sahal satu contoh. Sehingga kedepannya interface tersebut dapat diimplementasikan dan dibandingkan untuk suatu fitur baru.
+5. Child dapat dianggap sebagai parent. Hal ini diperlukan karena pada dasarnya parent adalah bentuk general dari child, sehingga semua child harus memiliki properti parentnya juga. jika B inherit A dan kita ingin membandingkan sesama A, maka kita harus bisa menggunakan B dalam perbandingan tersebut.
+6. Menekankan pada intuisi dibandingkan panjang kode. Konsep ISP menjelaskan bahwa panjang kode tidak menjadi masalah, intuisi awal ketika melihat nama kelas/fungsi harus segera terbentuk untuk mengetahui apa kelas/fungsi tersebut lakukan. Suatu interface yang memiliki 4 method dapat dipecah menjadi 2 method dengan nama yang lebih representatif menggambarkan fungsi-fungsi di dalamnya.
+
+## Disadvantages of not applying SOLID principles.
+
+1. Panjang fungsi yang terlalu panjang dapat menurunkan produktivitas developer. Membaca suatu fungsi kompleks yang panjang sudah membuat kita malas terlebih dahulu bahkan sebelum membacanya.
+2. Modifikasi kode lama mungkin terjadi. Memodifikasi kode lama dapat memicu modifikasi test, merusak, dan menghapus jaminan fitur yang sudah jalan.
+3. Pemahaman kode yang lebih lama. Dikarenakan panjangnya suatu fungsi, nama dari fungsi tersebut memiliki potensi untuk tidak intuitif sehingga menuntut developer untuk membaca isinya.
+4. Penambahan fitur yang susah. Penambahan fitur dapat memicu modifikasi kode lama. Selain itu, penambahan fitur mungkin memerlukan banyak repetisi kode.
+
 # Tutorial 2
 ## Code Quality Issue(s)
 Beberapa code quality issue yang saya dapat dari PMD adalah
