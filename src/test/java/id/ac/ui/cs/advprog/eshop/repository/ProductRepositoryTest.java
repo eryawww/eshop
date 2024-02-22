@@ -98,10 +98,10 @@ class ProductRepositoryTest {
         assertEquals("B", productRepository.getProductByProductId("B").getProductId());
         productRepository.getProductByProductId("NON EXISTING");
 
-        productRepository.deleteByProductId("B");
+        productRepository.delete("B");
         assertEquals(0, productRepository.findAll().size());
 
-        Product deleted = productRepository.deleteByProductId("C");
+        Product deleted = productRepository.delete("C");
         assertNull(deleted);
     }
 

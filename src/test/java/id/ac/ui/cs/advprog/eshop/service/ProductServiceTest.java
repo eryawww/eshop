@@ -67,7 +67,7 @@ public class ProductServiceTest {
         Mockito.when(productRepository.create(product)).thenReturn(product);
         productService.create(product);
 
-        Mockito.when(productRepository.deleteByProductId("Product A")).thenReturn(product);
+        Mockito.when(productRepository.delete("Product A")).thenReturn(product);
         Product resultDeleteId = productService.deleteByProductId("Product A");
 
         Mockito.when(productRepository.create(product)).thenReturn(product);
