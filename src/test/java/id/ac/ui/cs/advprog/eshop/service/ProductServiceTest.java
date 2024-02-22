@@ -32,7 +32,7 @@ public class ProductServiceTest {
         productService.create(product);
 
         Mockito.when(productRepository.getProductByProductId("Product A")).thenReturn(product);
-        Product savedProduct = productService.getProductByProductId("Product A");
+        Product savedProduct = productService.findById("Product A");
         assertEquals(product.getProductId(), savedProduct.getProductId());
         assertEquals(product.getProductName(), savedProduct.getProductName());
         assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());

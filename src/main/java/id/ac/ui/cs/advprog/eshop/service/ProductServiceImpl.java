@@ -18,11 +18,11 @@ public class ProductServiceImpl implements ProductService {
         return product;
     }
 
-    public Product edit(Product product){
+    public Product update(String productId, Product product){
         return productRepository.edit(product);
     }
 
-    public Product getProductByProductId(String productId){
+    public Product findById(String productId){
         return productRepository.getProductByProductId(productId);
     }
 
