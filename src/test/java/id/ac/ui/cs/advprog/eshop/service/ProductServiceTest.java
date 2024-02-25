@@ -32,7 +32,7 @@ public class ProductServiceTest {
         productService.create(product);
 
         Mockito.when(productRepository.getProductByProductId("Product A")).thenReturn(product);
-        Product savedProduct = productService.getProductByProductId("Product A");
+        Product savedProduct = productService.findById("Product A");
         assertEquals(product.getProductId(), savedProduct.getProductId());
         assertEquals(product.getProductName(), savedProduct.getProductName());
         assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
@@ -50,7 +50,7 @@ public class ProductServiceTest {
         productService.create(product);
 
         Mockito.when(productRepository.edit(product)).thenReturn(product);
-        Product resultEdit = productService.edit(product);
+        Product resultEdit = productService.update(product.getProductId(), product);
 
         assertEquals("Product A", resultEdit.getProductId());
         assertEquals("Sampo", resultEdit.getProductName());
@@ -67,14 +67,14 @@ public class ProductServiceTest {
         Mockito.when(productRepository.create(product)).thenReturn(product);
         productService.create(product);
 
-        Mockito.when(productRepository.deleteByProductId("Product A")).thenReturn(product);
-        Product resultDeleteId = productService.deleteByProductId("Product A");
+        Mockito.when(productRepository.delete("Product A")).thenReturn(product);
+        Product resultDeleteId = productService.delete("Product A");
 
         Mockito.when(productRepository.create(product)).thenReturn(product);
         productService.create(product);
 
-        Mockito.when(productRepository.delete(0)).thenReturn(product);
-        Product resultDelete = productService.delete(0);
+        Mockito.when(productRepository.delete("0")).thenReturn(product);
+        Product resultDelete = productService.delete("0");
 
         assertEquals("Product A", resultDelete.getProductId());
         assertEquals("Barang", resultDelete.getProductName());

@@ -1,14 +1,14 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
+import id.ac.ui.cs.advprog.eshop.model.Car;
 import id.ac.ui.cs.advprog.eshop.model.Product;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@Repository
-public class ProductRepository {
+@org.springframework.stereotype.Repository
+public class ProductRepository implements Repository<Product> {
     private List<Product> productData = new ArrayList<>();
     public Product create(Product product){
         productData.add(product);
@@ -17,21 +17,12 @@ public class ProductRepository {
         }
         return product;
     }
-    public Product delete(int index){
-        Product product = productData.get(index);
-        productData.remove(index);
-        return product;
-    }
-    public Product deleteByProduct(Product product) {
-        productData.remove(product);
-        return product;
-    }
 
-    public Product deleteByProductId(String productId){
+    public Product delete(String productId){
         List<Product> allProducts = findAll();
         for(Product currentProduct: allProducts) {
             if(currentProduct.getProductId().equals(productId)) {
-                deleteByProduct(currentProduct);
+                productData.remove(currentProduct);
                 return currentProduct;
             }
         }
@@ -52,7 +43,6 @@ public class ProductRepository {
 
     public Product getProductByProductId(String productId){
         List<Product> allProduct = findAll();
-        System.out.println("XXXXX "+allProduct.size());
         for (Product currentProduct : allProduct) {
             if (currentProduct.getProductId().equals(productId)) {
                 return currentProduct;
@@ -67,6 +57,29 @@ public class ProductRepository {
         List<Product> allProduct = new ArrayList<>();
         productIterator.forEachRemaining(allProduct::add);
         return allProduct;
+    }
+
+    @Override
+    public Product findById(String id) {
+        for (Product product: productData){
+            if (product.getProductId().equals(id)){
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Product update(String id, Product updated) {
+        for (int i=0; i<productData.size(); i++){
+            Product car = productData.get(i);
+            if(car.getProductId().equals(id)){
+                car.setProductName(updated.getProductName());
+                car.setProductId(updated.getProductId());
+                car.setProductQuantity(updated.getProductQuantity());
+            }
+        }
+        return null;
     }
 
     public Iterator<Product> findAllIter(){
