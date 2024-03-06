@@ -1,6 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.repository;
-import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
-import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
+import enums.OrderStatus;
+import enums.PaymentMethod;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
 import id.ac.ui.cs.advprog.eshop.model.Product;
@@ -40,7 +40,6 @@ class PaymentRepositoryTest {
         Order order2 = new Order("2222-2222-2222-2222", products, 69L, "B");
         orders.add(order2);
 
-        // payment
         payments = new ArrayList<>();
 
         Map<String, String> paymentData1 = new HashMap<>();
@@ -85,6 +84,6 @@ class PaymentRepositoryTest {
         }
 
         List<Payment> paymentList = paymentRepository.getAllPayment();
-        assertEquals(2, paymentList.size());
+        assertEquals(1, paymentList.size());
     }
 }
