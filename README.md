@@ -1,4 +1,16 @@
 Link: https://tutorial1-eryaw.koyeb.app
+
+# Tutorial 4
+
+1. Menurut saya, framework Percival (2017) tidak begitu cocok untuk saya. Menurut saya, konsep ini akan efektif jika terdapat prosedur perancangan yang sangat strict. Adanya prosedur desain seperti uml diagram akan memperkuat konsep ini. Namun, untuk rapid development yang tidak menerapkan prosedur uml yang strict, framework ini hanya akan menyusahkan dan memperlambat proses pengembangan perangkat lunak. Hal ini dikarenakan pengembangan test secara buta yang dapat menyebabkan banyak kesalahan itu sendiri. Pengembangan test tanpa code intelligence sendiri akan memicu banyak error yang memerlukan revisi disaat implementasi fitur, yang mana kontradiksi dengan penulisan test di awal.  
+
+2.
+Fast: Pemanfaatan stubbing pada Payment membuat test berjalan lebih cepat.
+Isolated/Independent: Test yang dibuat tidak mempengaruhi satu sama lain dengan adanya set up.
+Repeatable: Penggunaan test yang konsisten dan modular mendukung konsep repeatable yang simpel untuk dijalankan pada tiap waktu. 
+Self-Validating: Penggunaan assertions mendukung prinsip ini, unittest akan otomatis mendeteksi mana yang benar dan mana yang salah.
+Thorough/Timely: Prinsip ini sangat mirip dengan konsep code coverage, yang mana sudah cukup tinggi saya implementasikan.
+
 # Tutorial 3
 ## Principles applied
 Saya menggunakan prinsip Single Responsibility Principle
