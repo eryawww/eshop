@@ -62,18 +62,18 @@ class PaymentTest {
     @Test
     void testRejectedVoucherCodeNot16Chars() {
         Map<String, String> paymentData = new HashMap<>();
-        paymentData.put("voucherCode", "ESHOP11111111XXX");
+        paymentData.put("voucherCode", "ESHOP11111111X");
 
-        Payment payment = new Payment("ESHOP11111111XXX", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
+        Payment payment = new Payment("ESHOP11111111X", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
         assertEquals("REJECTED", payment.getStatus());
     }
 
     @Test
     void testRejectedVoucherCodeWrongPrefix() {
         Map<String, String> paymentData = new HashMap<>();
-        paymentData.put("voucherCode", "ESHOP11111111XXX");
+        paymentData.put("voucherCode", "ESHOPSALAHXX");
 
-        Payment payment = new Payment("ESHOP11111111XXX", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
+        Payment payment = new Payment("ESHOPSALAHXX", "VOUCHER_CODE", this.orders.getFirst(), paymentData);
         assertEquals("REJECTED", payment.getStatus());
     }
 
